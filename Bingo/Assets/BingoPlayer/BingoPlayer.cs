@@ -71,11 +71,17 @@ public class BingoPlayer : NetworkComponent
                     
                     for(int j = multiplier*5;j< multiplier*5+5;j++)
                     {
-                        if(t == cardNums[i])
+                        bool check = true;
+                        while(check)
                         {
-                            t = ((int)Random.Range(1, 15)) + 15 * multiplier;
-                            j = multiplier*5-1;
-                        }                       
+                            if (t == cardNums[i])
+                            {
+                                t = ((int)Random.Range(1, 15)) + 15 * multiplier;
+                                j = multiplier * 5 - 1;
+                            }
+                            else
+                                check = false;
+                        }
                     }
                     cardNums[i] = t;
                     cardTiles[i] = GameObject.Instantiate(numberTile);
